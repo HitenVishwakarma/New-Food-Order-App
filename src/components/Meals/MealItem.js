@@ -4,18 +4,21 @@ import "./MealItem.css";
 import { MealItemForm } from "./MealItemForm";
 
 export const MealItem = (props) => {
-  const { addItems } = useContext(AppContext);
+  const { addItems, items } = useContext(AppContext);
   const price = `$${props.price.toFixed(2)}`;
 
   const addCartHandler = (amount) => {
-    addItems([
+    const newItems = [
       {
         id: props.id,
         name: props.name,
         amount: amount,
         price: props.price,
       },
-    ]);
+    ];
+
+    const updatedItems = [...items.concat(newItems)];
+    addItems(updatedItems);
   };
   return (
     <li className="meal">
