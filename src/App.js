@@ -1,15 +1,18 @@
-import { Fragment } from "react";
+import { Fragment, useContext, useEffect, useState } from "react";
 import { Cart } from "./components/Cart/Cart";
 import { Header } from "./components/Layout/Header";
 import { Meals } from "./components/Meals/Meals";
+import { AppContext, AppContextProvider } from "./components/store/AppContext";
 
 const App = () => {
+  const { showAndHideCart } = useContext(AppContext);
+
   return (
-    <Fragment>
-      <Cart />
+    <div>
+      {showAndHideCart && <Cart />}
       <Header />
       <Meals />
-    </Fragment>
+    </div>
   );
 };
 

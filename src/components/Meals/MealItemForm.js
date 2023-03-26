@@ -1,9 +1,21 @@
+import { useContext, useRef } from "react";
+import { AppContext } from "../store/AppContext";
 import { Input } from "../UI/Input";
 import "./MealItemForm.css";
 export const MealItemForm = (props) => {
+  const inputRef = useRef();
+
+  const formSubmitHandler = (event) => {
+    // console.log("event", event)
+    event.preventDefault();
+    const enteredAmount = inputRef.current.value;
+    props.onAddAmount(+enteredAmount);
+  };
+
   return (
-    <form className="form">
+    <form className="form" onSubmit={formSubmitHandler}>
       <Input
+        ref={inputRef}
         label="Amount"
         input={{
           id: "amount_" + props.id,

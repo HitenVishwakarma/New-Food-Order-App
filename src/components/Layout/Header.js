@@ -3,7 +3,7 @@ import mealImage from "../Assets/meals.jpg";
 import { HeaderCartButton } from "../Cart/HeaderCartButton";
 import "./Header.css";
 
-export const Header = () => {
+export const Header = (props) => {
   return (
     <Fragment>
       <header className="header">

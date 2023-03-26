@@ -1,9 +1,13 @@
 import "./Modal.css";
-import { Fragment } from "react";
+import { Fragment, useContext } from "react";
 import ReactDOM from "react-dom";
+import { AppContext } from "../store/AppContext";
 
-const Backdrop = () => {
-  return <div className="backdrop"></div>;
+const Backdrop = (props) => {
+  const { setShowAndHideCart } = useContext(AppContext);
+  return (
+    <div className="backdrop" onClick={() => setShowAndHideCart(false)}></div>
+  );
 };
 
 const Overlay = (props) => {
