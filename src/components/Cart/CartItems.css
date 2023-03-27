@@ -24,3 +24,11 @@
 .cart-amount {
     margin-left: 2rem;
 }
+
+.delete-icon {
+    cursor: pointer;
+}
+
+.delete-icon:hover {
+    color: red;
+}

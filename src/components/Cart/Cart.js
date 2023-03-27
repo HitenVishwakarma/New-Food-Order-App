@@ -5,12 +5,18 @@ import "./Cart.css";
 import { CartItems } from "./CartItems";
 
 export const Cart = (props) => {
-  const { setShowAndHideCart, items } = useContext(AppContext);
+  const { setShowAndHideCart, items, setItems } = useContext(AppContext);
   const defaultValue = 0;
   const itemsAmount = items.map((item) => item.price);
   const subTotalAmount = `$${itemsAmount
     .reduce((curr, num) => curr + num, defaultValue)
     .toFixed(2)}`;
+
+  const removeCartItemhandler = (id) => {
+    const filterItem = items.filter((item) => item.id !== id);
+    setItems(filterItem);
+  };
+
   const cartItems = (
     <ul className="cart-items">
       {items.map((item, index) => (
@@ -19,10 +25,12 @@ export const Cart = (props) => {
           name={item.name}
           amount={item.amount}
           price={item.price}
+          onRemove={() => removeCartItemhandler(item.id)}
         />
       ))}
     </ul>
   );
+  console.log("cartItems", cartItems);
   return (
     <Modal>
       {cartItems}

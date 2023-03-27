@@ -3,18 +3,13 @@ import { AppContext } from "../store/AppContext";
 import { Input } from "../UI/Input";
 import "./MealItemForm.css";
 export const MealItemForm = (props) => {
-  const { totalAmount, setTotalAmount } = useContext(AppContext);
   const inputRef = useRef();
 
   const formSubmitHandler = (event) => {
     event.preventDefault();
     const enteredAmount = inputRef.current.value;
     const enteredAmountNumber = +enteredAmount;
-    // console.log("event", enteredAmountNumber);
     props.onAddAmount(enteredAmountNumber);
-    const total = Number(totalAmount) + Number(enteredAmountNumber);
-    // console.log(Number(totalAmount) + Number(enteredAmountNumber));
-    setTotalAmount(total);
   };
 
   return (

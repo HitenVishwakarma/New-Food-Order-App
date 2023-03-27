@@ -4,7 +4,10 @@ import { AppContext } from "../store/AppContext";
 import "./HeaderCartButton.css";
 
 export const HeaderCartButton = (props) => {
-  const { totalAmount, setShowAndHideCart } = useContext(AppContext);
+  const { setShowAndHideCart, items } = useContext(AppContext);
+  const totalCount = items
+    .map((item) => item.amount)
+    .reduce((curr, num) => curr + num, 0);
 
   return (
     <button className="button" onClick={() => setShowAndHideCart(true)}>
@@ -12,7 +15,7 @@ export const HeaderCartButton = (props) => {
         <CartIcon />
       </span>
       <span>Your Cart</span>
-      <span className="badge">{totalAmount}</span>
+      <span className="badge">{totalCount}</span>
     </button>
   );
 };

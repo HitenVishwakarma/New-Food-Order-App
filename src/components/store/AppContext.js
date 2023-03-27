@@ -2,12 +2,11 @@ import { createContext, useReducer } from "react";
 
 const AppContextInitialState = {
   items: [],
-  totalAmount: 0,
   showAndHideCart: false,
   addItems: () => {},
   removeitem: () => {},
   setShowAndHideCart: () => {},
-  setTotalAmount: () => {},
+  setItems: () => {},
 };
 
 export const AppContext = createContext(AppContextInitialState);
@@ -21,12 +20,11 @@ export const AppContextProvider = (props) => {
       setShowAndHideCart: (showHide) => {
         setState({ showAndHideCart: showHide });
       },
-      totalAmount: 0,
-      setTotalAmount: (total) => {
-        setState({ totalAmount: total });
-      },
       items: [],
       addItems: (item) => {
+        setState({ items: item });
+      },
+      setItems: (item) => {
         setState({ items: item });
       },
     }
